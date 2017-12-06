@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <body style="background-color: black; color: white; font-family: sans-serif; text-align: center">
+    <h1 style="">space invaders</h1>
+    <h2 id="message">waiting for players...</h2>
+    <canvas id="game" height="512" width="448" style="image-rendering: pixelated; background-color: black; margin-left: auto; margin-right: auto; display: block; margin-top: 20px; border: 0px solid white"></canvas>
+    <script src="/GameModel.js"></script>
+    <script src="/EventController.js"></script>
+    <script src="/GameController.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      let socket = io();
+      let player;
+      socket.on('ready', () => {
+        document.getElementById('message').innerHTML = 'READY!';
+        socket.emit('ready');
+      });
+      socket.on('start', () => {
+        g = new GameController(socket);
+        g.player = player;
+      });
+      socket.on('player', (num) => {
+        player = num;
+      });
+    </script>
+  </body>
+</html>

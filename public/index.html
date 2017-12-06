@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <body style="background-color: black; color: white; font-family: sans-serif; text-align: center">
+    <h1>space invaders</h1>
+    <a id="link" style="color: white; text-transform: uppercase; border: 20px solid white; padding: 20px; text-decoration: none; font-size: 48pt; font-weight: 700; display: block; width: 50%; margin-left: auto; margin-right: auto;">Play</a>
+    <script>
+      document.getElementById('link').setAttribute('href', '/play/' + id());
+      function id() {
+          var text = "";
+          var possible = "abcdefghijklmnopqrstuvwxyz0123456789";
+          for (var i = 0; i < 5; i++)
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+          return text;
+      }
+    </script>
+  </body>
+</html>
